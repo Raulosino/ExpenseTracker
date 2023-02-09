@@ -23,14 +23,10 @@ const NewExpense = (props) => {
         setFormStatus(false);
     }
 
-    let divContent = <button onClick={showForm}>Add New Expense</button>;
-    if(formStatus){
-       divContent =  <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} closeFormSignal={cancelFormSignal}/>
-    }
-
     return(
         <Card className="new-expense">
-            {divContent}
+            {!formStatus && <button onClick={showForm}>Add New Expense</button>;}
+            {formStatus && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} closeFormSignal={cancelFormSignal}/>}
         </Card>
     );
 }
